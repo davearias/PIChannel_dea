@@ -76,8 +76,11 @@ then
   status="${status} success ${imgcount} new images retrieved"
 
   cp --force ${MEDIAMETA}.TMP ${MEDIAMETA}
-  /home/pi/processmail/rebuild_media.sh
-  sudo /etc/init.d/lightdm restart
+  	if [ $imgcount -gt 0 ] ;
+  	then
+  	/home/pi/processmail/rebuild_media.sh
+  	sudo /etc/init.d/lightdm restart
+  	fi
 else
   if [ $gmresult -eq 0 ] ;
   then
